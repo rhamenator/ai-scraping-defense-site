@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Scraping Defense</title>
-<meta name="description" content="Open-source (GPL-3.0) tools for detecting, throttling, deceiving and blocking unwanted AI crawlers: Python, Rust and .NET implementations, an MCP request-risk server, and passive CAPTCHA plugins for WordPress.">
+<meta name="description" content="Open-source (GPL-3.0) tools for detecting, throttling, deceiving and blocking unwanted AI crawlers: Python, Rust and .NET implementations, an MCP request-risk server, and a request-risk MCP server.">
 <link rel="icon" href="assets/asd-python.png">
 <style>
 :root{--bg:#0e1116;--panel:#161b22;--line:#2a313c;--text:#e6edf3;--mut:#9aa7b4;--acc:#58d6a7;--acc2:#7cb7ff;--warn:#f0b35a}
@@ -58,7 +58,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--mut);fon
 <body>
 <header class="top"><div class="wrap"><nav>
 <b>AI Scraping Defense</b>
-<a href="#implementations">Implementations</a><a href="#layers">How it works</a><a href="#compare">Compare</a><a href="#companions">Companions</a><a href="#start">Get started</a>
+<a href="#implementations">Implementations</a><a href="#layers">How it works</a><a href="#compare">Compare</a><a href="#companions">Companions</a><a href="#sites">More sites</a><a href="#start">Get started</a>
 <a href="https://github.com/rhamenator/ai-scraping-defense">GitHub</a>
 </nav></div></header>
 
@@ -127,28 +127,28 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--mut);fon
 
 <section id="companions"><div class="wrap">
 <h2>Companion projects</h2>
-<p class="sub">Related tools that work alongside the main stack or on their own.</p>
+<p class="sub">MCP servers that give an AI agent explainable request-risk assessments. They work alongside the main stack or on their own.</p>
 <div class="grid">
 <article class="card">
 <div class="head"><img src="assets/request-guard.png" alt=""><div><h3>request-guard-mcp</h3><div class="tags"><span class="tag">Rust</span><span class="tag">MCP</span><span class="tag">v1.0.0</span></div></div></div>
 <p>An MCP server that classifies inbound HTTP requests for risk and returns explainable bot and abuse signals, with optional enrichment. The AI Scraping Defense projects are optional clients. A companion agent skill is included.</p>
-<div class="links"><a href="https://github.com/rhamenator/request-guard-mcp">Repository</a><a href="https://www.npmjs.com/package/request-guard-mcp">npm</a></div>
+<div class="links"><a href="https://github.com/rhamenator/request-guard-mcp">Repository</a><a href="https://www.npmjs.com/package/request-guard-mcp">npm</a><a href="https://requestguard.dev">requestguard.dev</a></div>
 </article>
 <article class="card">
 <div class="head"><div><h3>request-guard-mcp-dotnet</h3><div class="tags"><span class="tag">C# / .NET</span><span class="tag">MCP</span></div></div></div>
 <p>A from-scratch .NET port of request-guard-mcp targeting the same 23 tools and behavior, checked against the Rust server by a differential test suite.</p>
 <div class="links"><a href="https://github.com/rhamenator/request-guard-mcp-dotnet">Repository</a></div>
 </article>
-<article class="card">
-<div class="head"><div><h3>passive-captcha-wordpress</h3><div class="tags"><span class="tag">PHP</span><span class="tag">WordPress</span><span class="tag st">In development</span></div></div></div>
-<p>Invisible CAPTCHA for any WordPress form. Timing, JS execution, fingerprinting, nonce and session checks, rate limits and IP lists, with no challenge shown to visitors. Multisite ready.</p>
-<div class="links"><a href="https://github.com/rhamenator/passive-captcha-wordpress">Repository</a></div>
-</article>
-<article class="card">
-<div class="head"><div><h3>passive-captcha-gravity-forms</h3><div class="tags"><span class="tag">JavaScript / PHP</span><span class="tag">Gravity Forms</span><span class="tag st">In development</span></div></div></div>
-<p>The same passive approach packaged for Gravity Forms. Add a hidden CAPTCHA Token field, then tune thresholds, webhooks and IP lists from a settings page.</p>
-<div class="links"><a href="https://github.com/rhamenator/passive-captcha-gravity-forms">Repository</a></div>
-</article>
+</div>
+</div></section>
+
+<section id="sites"><div class="wrap">
+<h2>Related sites</h2>
+<p class="sub">Where to find more of this work.</p>
+<div class="grid">
+<article class="card"><h3>requestguard.dev</h3><p>The home of Request Guard MCP: a recorded example verdict, install guides for every platform, and optional agent instruction bundles.</p><div class="links"><a href="https://requestguard.dev">Visit requestguard.dev</a></div></article>
+<article class="card"><h3>rhamenator.com</h3><p>Rich Hamilton's personal website.</p><div class="links"><a href="https://rhamenator.com">Visit rhamenator.com</a></div></article>
+<article class="card"><h3>rhamenator.github.io</h3><p>The homepage for all of Rich's public repositories.</p><div class="links"><a href="https://rhamenator.github.io">Visit rhamenator.github.io</a></div></article>
 </div>
 </div></section>
 
@@ -166,7 +166,7 @@ docker compose up --build</code></pre>
 </main>
 
 <footer><div class="wrap">
-Projects by <a href="https://github.com/rhamenator">Rich Hamilton</a>, released under the GNU GPL. Contributions and issues are welcome on each repository.
+Projects by <a href="https://github.com/rhamenator">Rich Hamilton</a> (<a href="https://rhamenator.com">rhamenator.com</a>), released under the GNU GPL. Contributions and issues are welcome on each repository.
 </div></footer>
 </body>
 </html>
