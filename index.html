@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Scraping Defense</title>
+<meta name="description" content="Open-source (GPL-3.0) tools for detecting, throttling, deceiving and blocking unwanted AI crawlers: Python, Rust and .NET implementations, an MCP request-risk server, and passive CAPTCHA plugins for WordPress.">
+<link rel="icon" href="assets/asd-python.png">
+<style>
+:root{--bg:#0e1116;--panel:#161b22;--line:#2a313c;--text:#e6edf3;--mut:#9aa7b4;--acc:#58d6a7;--acc2:#7cb7ff;--warn:#f0b35a}
+@media (prefers-color-scheme:light){:root{--bg:#f7f8fa;--panel:#fff;--line:#dde2e8;--text:#1b2430;--mut:#59656f;--acc:#0b8a63;--acc2:#1f62c4;--warn:#9a6200}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+a{color:var(--acc2)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+header.top{border-bottom:1px solid var(--line)}
+nav{display:flex;gap:20px;align-items:center;padding:14px 0;flex-wrap:wrap}
+nav b{margin-right:auto}
+nav a{color:var(--mut);text-decoration:none;font-size:.95rem}
+nav a:hover{color:var(--text)}
+.hero{padding:64px 0 40px;display:grid;grid-template-columns:1fr 220px;gap:32px;align-items:center}
+.hero img{width:220px;height:220px;justify-self:center}
+h1{font-size:clamp(2rem,5vw,3rem);line-height:1.15;margin:0 0 16px}
+.lead{color:var(--mut);font-size:1.1rem;max-width:60ch}
+.btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.btn{display:inline-block;padding:10px 18px;border-radius:8px;border:1px solid var(--line);text-decoration:none;color:var(--text);font-weight:600}
+.btn.p{background:var(--acc);color:#04130d;border-color:var(--acc)}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:1.6rem;margin:0 0 8px}
+.sub{color:var(--mut);margin:0 0 24px;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:10px}
+.card .head{display:flex;gap:14px;align-items:center}
+.card img{width:56px;height:56px;border-radius:10px}
+.card h3{margin:0;font-size:1.15rem}
+.card p{margin:0;color:var(--mut);font-size:.95rem}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:.75rem;border:1px solid var(--line);border-radius:99px;padding:2px 10px;color:var(--mut)}
+.tag.st{color:var(--warn);border-color:var(--warn)}
+.card ul{margin:0;padding-left:18px;color:var(--mut);font-size:.92rem}
+.card .links{margin-top:auto;display:flex;gap:14px;font-size:.92rem}
+.layers{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));counter-reset:l}
+.layers div{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:8px;padding:14px;counter-increment:l}
+.layers div::before{content:"Layer " counter(l);display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;color:var(--acc);margin-bottom:4px}
+.layers strong{display:block}
+.layers span{color:var(--mut);font-size:.9rem}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.93rem}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mut);font-weight:600}
+code,pre{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem}
+pre{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:14px;overflow-x:auto;margin:0}
+.note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:8px;padding:14px 16px;color:var(--mut)}
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--mut);font-size:.9rem}
+@media (max-width:700px){.hero{grid-template-columns:1fr;padding-top:36px}.hero img{width:140px;height:140px;order:-1;justify-self:start}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap"><nav>
+<b>AI Scraping Defense</b>
+<a href="#implementations">Implementations</a><a href="#layers">How it works</a><a href="#compare">Compare</a><a href="#companions">Companions</a><a href="#start">Get started</a>
+<a href="https://github.com/rhamenator/ai-scraping-defense">GitHub</a>
+</nav></div></header>
+
+<main>
+<div class="wrap">
+<div class="hero">
+<div>
+<h1>Take back control from unwanted AI crawlers.</h1>
+<p class="lead">A family of open-source tools for detecting, throttling, deceiving and blocking AI scrapers, built for creative, FOSS and documentation sites that never agreed to be training data. One defense strategy, three implementations: Python, Rust and .NET.</p>
+<div class="btns"><a class="btn p" href="#implementations">Choose an implementation</a><a class="btn" href="https://github.com/rhamenator">All repositories</a></div>
+</div>
+<img src="assets/asd-python.png" alt="AI Scraping Defense logo">
+</div>
+</div>
+
+<section id="implementations"><div class="wrap">
+<h2>Three implementations, one defense</h2>
+<p class="sub">All three share the same roles (edge enforcement, escalation, tarpit, blocklists, operator tooling) and are licensed GPL-3.0. Pick the one that fits your stack.</p>
+<div class="grid">
+<article class="card">
+<div class="head"><img src="assets/asd-python.png" alt=""><div><h3>ai-scraping-defense</h3><div class="tags"><span class="tag">Python</span><span class="tag">Nginx + Lua</span><span class="tag st">In development &amp; testing</span></div></div></div>
+<p>The original, microservice-based stack. Nginx and Lua at the edge, Python services behind it, containerized for Docker and Kubernetes.</p>
+<ul><li>Heuristics, ML model and optional LLM analysis</li><li>Tarpit API and AI Labyrinth honeypots</li><li>Community blocklist and federated peer sharing</li><li>Pay-per-crawl accounting and plugin API</li></ul>
+<div class="links"><a href="https://github.com/rhamenator/ai-scraping-defense">Repository</a></div>
+</article>
+<article class="card">
+<div class="head"><img src="assets/asd-rust.png" alt=""><div><h3>ai-scraping-defense-rust</h3><div class="tags"><span class="tag">Rust</span><span class="tag">Cargo workspace</span><span class="tag st">In development</span></div></div></div>
+<p>A fast, explicit, service-based control plane. Tracks API and deployment parity with the Python original.</p>
+<ul><li>Escalation engine, tarpit, CAPTCHA, admin UI</li><li>Config recommender with incident alerts</li><li>Edge ops for WAF, CDN, TLS and blocklist sync</li><li>Cargo, Docker Compose, Kubernetes and Helm; tagged release bundles for Linux, Windows and macOS</li></ul>
+<div class="links"><a href="https://github.com/rhamenator/ai-scraping-defense-rust">Repository</a><a href="https://github.com/rhamenator/ai-scraping-defense-rust/blob/master/docs/PARITY.md">Parity map</a></div>
+</article>
+<article class="card">
+<div class="head"><img src="assets/asd-dotnet.png" alt=""><div><h3>ai-scraping-defense-iis</h3><div class="tags"><span class="tag">C# / .NET</span><span class="tag">ASP.NET Core</span><span class="tag st">Experimental</span></div></div></div>
+<p>A pure-.NET implementation for Windows Server and IIS shops, shipped as a single deployable for v1.</p>
+<ul><li>Redis-backed blocklist enforcement at the edge</li><li>Deterministic tarpit with synthetic pages</li><li>Authenticated operator API and dashboard</li><li>SQLite, PostgreSQL or SQL Server intake; webhook, Slack and SMTP alerts</li></ul>
+<div class="links"><a href="https://github.com/rhamenator/ai-scraping-defense-iis">Repository</a></div>
+</article>
+</div>
+</div></section>
+
+<section id="layers"><div class="wrap">
+<h2>Defense in depth</h2>
+<p class="sub">Cheap checks run first at the edge. Only suspicious traffic is escalated to heavier analysis, so legitimate visitors are not slowed down.</p>
+<div class="layers">
+<div><strong>Detect</strong><span>Heuristics on user agents, headers, paths and request frequency flag likely bots.</span></div>
+<div><strong>Escalate</strong><span>Suspicious requests are scored by reputation data, a trained model and, optionally, an LLM.</span></div>
+<div><strong>Deceive</strong><span>Tarpits and endless honeypot pages waste the resources of confirmed scrapers.</span></div>
+<div><strong>Block</strong><span>Redis-backed blocklists and adaptive per-IP rate limits shut persistent bots out.</span></div>
+<div><strong>Share</strong><span>Optional community and peer blocklists spread what one site learns to others.</span></div>
+</div>
+<p class="sub" style="margin-top:20px">Pay-per-crawl support is included for sites that want to experiment with monetization. Whether bots may pay for access or stay blocked is entirely the operator's choice.</p>
+</div></section>
+
+<section id="compare"><div class="wrap">
+<h2>Which one should I use?</h2>
+<div class="tbl"><table>
+<thead><tr><th></th><th>Python</th><th>Rust</th><th>.NET</th></tr></thead>
+<tbody>
+<tr><th>Best for</th><td>Linux hosts with Nginx; the most complete feature set</td><td>Performance-minded operators; native binaries</td><td>Windows Server / IIS environments</td></tr>
+<tr><th>Shape</th><td>Nginx + Lua + Python microservices</td><td>Multi-service Rust workspace</td><td>Single ASP.NET Core deployable</td></tr>
+<tr><th>Deploy with</th><td>Docker, Kubernetes</td><td>Cargo, Docker Compose, Kubernetes, Helm, release bundles</td><td>IIS / ASP.NET Core host</td></tr>
+<tr><th>Status</th><td>In development and testing</td><td>In development</td><td>Experimental release</td></tr>
+<tr><th>License</th><td colspan="3">GPL-3.0</td></tr>
+</tbody></table></div>
+</div></section>
+
+<section id="companions"><div class="wrap">
+<h2>Companion projects</h2>
+<p class="sub">Related tools that work alongside the main stack or on their own.</p>
+<div class="grid">
+<article class="card">
+<div class="head"><img src="assets/request-guard.png" alt=""><div><h3>request-guard-mcp</h3><div class="tags"><span class="tag">Rust</span><span class="tag">MCP</span><span class="tag">v1.0.0</span></div></div></div>
+<p>An MCP server that classifies inbound HTTP requests for risk and returns explainable bot and abuse signals, with optional enrichment. The AI Scraping Defense projects are optional clients. A companion agent skill is included.</p>
+<div class="links"><a href="https://github.com/rhamenator/request-guard-mcp">Repository</a><a href="https://www.npmjs.com/package/request-guard-mcp">npm</a></div>
+</article>
+<article class="card">
+<div class="head"><div><h3>request-guard-mcp-dotnet</h3><div class="tags"><span class="tag">C# / .NET</span><span class="tag">MCP</span></div></div></div>
+<p>A from-scratch .NET port of request-guard-mcp targeting the same 23 tools and behavior, checked against the Rust server by a differential test suite.</p>
+<div class="links"><a href="https://github.com/rhamenator/request-guard-mcp-dotnet">Repository</a></div>
+</article>
+<article class="card">
+<div class="head"><div><h3>passive-captcha-wordpress</h3><div class="tags"><span class="tag">PHP</span><span class="tag">WordPress</span><span class="tag st">In development</span></div></div></div>
+<p>Invisible CAPTCHA for any WordPress form. Timing, JS execution, fingerprinting, nonce and session checks, rate limits and IP lists, with no challenge shown to visitors. Multisite ready.</p>
+<div class="links"><a href="https://github.com/rhamenator/passive-captcha-wordpress">Repository</a></div>
+</article>
+<article class="card">
+<div class="head"><div><h3>passive-captcha-gravity-forms</h3><div class="tags"><span class="tag">JavaScript / PHP</span><span class="tag">Gravity Forms</span><span class="tag st">In development</span></div></div></div>
+<p>The same passive approach packaged for Gravity Forms. Add a hidden CAPTCHA Token field, then tune thresholds, webhooks and IP lists from a settings page.</p>
+<div class="links"><a href="https://github.com/rhamenator/passive-captcha-gravity-forms">Repository</a></div>
+</article>
+</div>
+</div></section>
+
+<section id="start"><div class="wrap">
+<h2>Get started</h2>
+<p class="sub">Each repository documents its own setup. A quick taste of the Rust stack:</p>
+<pre><code>git clone https://github.com/rhamenator/ai-scraping-defense-rust
+cd ai-scraping-defense-rust
+cp config/sample.env .env
+python scripts/configure_credentials.py
+docker compose up --build</code></pre>
+<p class="sub" style="margin-top:20px">For the Python or .NET versions, start from the README in <a href="https://github.com/rhamenator/ai-scraping-defense">ai-scraping-defense</a> or <a href="https://github.com/rhamenator/ai-scraping-defense-iis">ai-scraping-defense-iis</a>.</p>
+<div class="note"><strong>Heads up:</strong> most of these projects are still in development or testing. Review the configuration, test on a staging site, and keep an allowlist for the search engines and monitoring you want to keep.</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+Projects by <a href="https://github.com/rhamenator">Rich Hamilton</a>, released under the GNU GPL. Contributions and issues are welcome on each repository.
+</div></footer>
+</body>
+</html>
