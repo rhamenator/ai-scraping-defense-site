@@ -58,7 +58,7 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--mut);fon
 <body>
 <header class="top"><div class="wrap"><nav>
 <b>AI Scraping Defense</b>
-<a href="#implementations">Implementations</a><a href="#layers">How it works</a><a href="#compare">Compare</a><a href="#companions">Companions</a><a href="#sites">More sites</a><a href="#start">Get started</a>
+<a href="#implementations">Implementations</a><a href="#layers">How it works</a><a href="#use-cases">When to use it</a><a href="#compare">Compare</a><a href="#companions">Companions</a><a href="#sites">More sites</a><a href="#start">Get started</a>
 <a href="https://github.com/rhamenator/ai-scraping-defense">GitHub</a>
 </nav></div></header>
 
@@ -110,6 +110,24 @@ footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--mut);fon
 <div><strong>Share</strong><span>Optional community and peer blocklists spread what one site learns to others.</span></div>
 </div>
 <p class="sub" style="margin-top:20px">Pay-per-crawl support is included for sites that want to experiment with monetization. Whether bots may pay for access or stay blocked is entirely the operator's choice.</p>
+</div></section>
+
+<section id="use-cases"><div class="wrap">
+<h2>When to use it, and when not to</h2>
+<p class="sub">AI Scraping Defense and Cloudflare are not either/or. They solve overlapping problems at different layers.</p>
+<div class="grid">
+<article class="card"><h3>Reach for AI Scraping Defense when&hellip;</h3>
+<ul><li>you cannot or will not put a third party in front of your traffic (privacy, data residency, compliance, an on-premises or small host)</li>
+<li>you want your own policy: decoys, tarpits, honeypot paths, custom rules, or pay-per-crawl terms you set</li>
+<li>you want to see and explain every decision, and keep the logs yourself</li>
+<li>you run creative, free software or documentation sites and want a say in who trains on them</li></ul></article>
+<article class="card"><h3>Reach for Cloudflare (or both) when&hellip;</h3>
+<ul><li>you need network-scale DDoS absorption or a global CDN</li>
+<li>you want a managed WAF and a large shared threat network</li>
+<li>you would rather not operate security infrastructure yourself</li>
+<li>Cloudflare in front plus AI Scraping Defense at the origin works well: the edge absorbs volume, your server enforces your site-specific policy</li></ul></article>
+</div>
+<p class="sub" style="margin-top:20px">Be realistic: these projects are still in development or experimental. Test on a staging site, keep an allowlist for the search engines and monitors you want, and check each repository's open issues for current limits.</p>
 </div></section>
 
 <section id="compare"><div class="wrap">
